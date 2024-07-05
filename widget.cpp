@@ -27,6 +27,7 @@ void Widget::Login()
         //Timetable *timetable = new Timetable(this);
         // table->show();
         // this->hide();
+
     }
 
     //连接数据库
@@ -35,6 +36,10 @@ void Widget::Login()
     QSqlDatabase database = QSqlDatabase::addDatabase("QSQLITE");
     database.setDatabaseName(dbPath);
 
+    // QString dbName = "database.db";
+    // // QString dbPath = QCoreApplication::applicationDirPath() + "./" + dbName;
+    // QSqlDatabase database = QSqlDatabase::addDatabase("QSQLITE");
+    // database.setDatabaseName(dbName);
 
     //验证数据库是否打开
     if (!database.open()) {

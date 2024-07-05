@@ -11,8 +11,8 @@ CONFIG += c++11
 SOURCES += \
     choose_course.cpp \
     main.cpp \
-    timetable.cpp \
-    widget.cpp
+    widget.cpp \
+    timetable.cpp
 
 HEADERS += \
     choose_course.h \
@@ -31,3 +31,4 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 RESOURCES += \
     res.qrc
+

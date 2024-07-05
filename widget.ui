@@ -16,7 +16,15 @@
   <property name="styleSheet">
    <string notr="true"/>
   </property>
-  <widget class="QWidget" name="centralwidget">
+  <widget class="QWidget" name="centralwidget" native="true">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>799</width>
+     <height>499</height>
+    </rect>
+   </property>
    <property name="styleSheet">
     <string notr="true">#centralwidget{
 	background-color: #f2f2f2;
@@ -474,7 +482,7 @@ QComboBox QAbstractItemView::item:selected {
       <string>学生</string>
      </property>
      <property name="icon">
-      <iconset resource="res.qrc">
+      <iconset>
        <normaloff>:/res/comuser.png</normaloff>:/res/comuser.png</iconset>
      </property>
     </item>
@@ -483,7 +491,7 @@ QComboBox QAbstractItemView::item:selected {
       <string>老师</string>
      </property>
      <property name="icon">
-      <iconset resource="res.qrc">
+      <iconset>
        <normaloff>:/res/publisher.png</normaloff>:/res/publisher.png</iconset>
      </property>
     </item>
@@ -584,28 +592,6 @@ QComboBox QAbstractItemView::item:selected {
      <bool>true</bool>
     </property>
    </widget>
-   <widget class="QLabel" name="refreshLabel">
-    <property name="geometry">
-     <rect>
-      <x>568</x>
-      <y>214</y>
-      <width>127</width>
-      <height>33</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">#refreshLabel {
-    background-image: url(:res/refresh.png); /* 设置正常状态下的背景图片 */
-}
-
-#refreshLabel:hover {
-    background-image: url(:res/refreshOver.png); /* 设置鼠标悬浮时的背景图片 */
-}</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
    <widget class="QLabel" name="labelMin">
     <property name="geometry">
      <rect>
@@ -645,8 +631,6 @@ QComboBox QAbstractItemView::item:selected {
    </widget>
   </widget>
  </widget>
- <resources>
-  <include location="res.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>

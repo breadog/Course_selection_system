@@ -22,6 +22,9 @@ public:
     explicit Timetable(const QString& username, QWidget *parent = nullptr);
     ~Timetable();
 
+private slots:
+    void on_pushButton_clicked();
+
 private:
     Ui::Timetable *ui;
 
