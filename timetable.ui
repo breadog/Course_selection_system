@@ -16,8 +16,8 @@
   <widget class="QTableView" name="tableView">
    <property name="geometry">
     <rect>
-     <x>50</x>
-     <y>70</y>
+     <x>80</x>
+     <y>60</y>
      <width>811</width>
      <height>451</height>
     </rect>
@@ -26,9 +26,9 @@
   <widget class="QLineEdit" name="welcome">
    <property name="geometry">
     <rect>
-     <x>80</x>
+     <x>120</x>
      <y>10</y>
-     <width>61</width>
+     <width>51</width>
      <height>21</height>
     </rect>
    </property>
@@ -36,10 +36,10 @@
     <string>欢迎您，</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_2">
+  <widget class="QLineEdit" name="usernameLine">
    <property name="geometry">
     <rect>
-     <x>140</x>
+     <x>170</x>
      <y>10</y>
      <width>41</width>
      <height>21</height>
@@ -49,7 +49,7 @@
   <widget class="QPushButton" name="pushButton">
    <property name="geometry">
     <rect>
-     <x>230</x>
+     <x>270</x>
      <y>10</y>
      <width>81</width>
      <height>23</height>

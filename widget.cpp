@@ -20,13 +20,13 @@ void Widget::Login()
 
     QString username = ui->accountLineEdit->text();
     QString password = ui->passwordLineEdit->text();
-    Timetable *table = new Timetable();
+    Timetable *table = new Timetable(username);
 
     if (username.isEmpty() && password.isEmpty()) {
         //**空处理**
         //Timetable *timetable = new Timetable(this);
-        table->show();
-        this->hide();
+        // table->show();
+        // this->hide();
     }
 
     //连接数据库
@@ -54,7 +54,6 @@ void Widget::Login()
     if(query.next()) //登录后
     {
 
-        // Timetable *timetable = new Timetable(this);
         table->show();
         this->hide();
 
