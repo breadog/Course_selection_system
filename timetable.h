@@ -10,6 +10,8 @@
 #include <QSqlQuery>
 #include <QDebug>
 
+#include "choose_course.h"
+
 namespace Ui {
 class Timetable;
 }
@@ -24,6 +26,11 @@ public:
 
 private slots:
     void on_pushButton_clicked();
+    void Drop_a_course();
+
+    void on_ChooseCourse_clicked();
+
+    void on_backtomain_clicked();
 
 private:
     Ui::Timetable *ui;
