@@ -2,6 +2,7 @@
 #include "ui_timetable.h"
 #include "widget.h"
 #include <QMessageBox>
+#include <QPushButton>
 #include <QTableWidgetItem>
 #include <QVector>
 
@@ -34,84 +35,7 @@ Timetable::Timetable(const QString& username, QWidget *parent)
         return;
     }
     QSqlQuery query;
-    query.prepare("SELECT coursename FROM Course");
 
-    QVector<QString> coursenameArray;
-    if (query.exec())
-    {
-        while (query.next())
-        {
-            QString coursename = query.value(0).toString();
-            coursenameArray.append(coursename);
-
-        }
-    }
-
-    query.prepare("SELECT coursetime FROM Course");
-    QVector<QString> coursetimeArray;
-    if (query.exec())
-    {
-        while (query.next())
-        {
-            QString coursetime = query.value(0).toString();
-            coursetimeArray.append(coursetime);
-        }
-    }
-
-    query.prepare("SELECT courseteacher FROM Course");
-    QVector<QString> courseteacherArray;
-    if (query.exec())
-    {
-        while (query.next())
-        {
-            QString courseteacher = query.value(0).toString();
-            courseteacherArray.append(courseteacher);
-
-        }
-    }
-    query.prepare("SELECT courseplace FROM Course");
-    QVector<QString> courseplaceArray;
-    if (query.exec())
-    {
-        while (query.next())
-        {
-            QString courseplace = query.value(0).toString();
-            courseplaceArray.append(courseplace);
-
-        }
-    }
-
-    QMultiMap<QString, QString> studentCourseMap;
-
-    query.prepare("SELECT studentname, coursename FROM Student");
-    if (query.exec())
-    {
-        while (query.next())
-        {
-            QString studentName = query.value(0).toString();
-            QString courseName = query.value(1).toString();
-
-            studentCourseMap.insert(studentName, courseName);
-            qDebug() << studentCourseMap;
-        }
-    }
-    QMap<QString, QString>::const_iterator it;
-    for (it = studentCourseMap.constBegin(); it != studentCourseMap.constEnd(); ++it)
-    {
-        QString studentName = it.key();       // 提取学生姓名（键）
-        QString courseName = it.value();      // 提取课程名（值）
-
-        // 在这里可以使用学生姓名和课程名进行后续操作
-        // ...
-
-        qDebug() << "Student: " << studentName << ", Course: " << courseName;
-
-    }
-
-    qDebug() << coursenameArray;
-    qDebug() << coursetimeArray;
-    qDebug() << courseteacherArray;
-    qDebug() << courseplaceArray;
 
     struct StudentCourseInfo {
         QString studentName;
@@ -127,6 +51,7 @@ Timetable::Timetable(const QString& username, QWidget *parent)
                "JOIN Course ON Student.coursename = Course.coursename");
 
 
+
     while (query.next()) {
         StudentCourseInfo studentCourseInfo;
         studentCourseInfo.studentName = query.value(0).toString();
@@ -135,8 +60,8 @@ Timetable::Timetable(const QString& username, QWidget *parent)
         studentCourseInfo.coursePlace = query.value(3).toString();
         studentCourseInfo.courseTeacher = query.value(4).toString();
 
-        // studentCourseList.append(studentCourseInfo);
         studentCourseList << studentCourseInfo;
+
         int row = 0; //行索引
         course_model->clear();
         for (const StudentCourseInfo& info : studentCourseList) {
@@ -174,9 +99,9 @@ Timetable::Timetable(const QString& username, QWidget *parent)
                 ++row;
             }
         }
-        db.close();
-    }
 
+    }
+    db.close();
 }
 
 Timetable::~Timetable()
@@ -186,6 +111,16 @@ Timetable::~Timetable()
 
 void Timetable::Drop_a_course()
 {
+    QString dbName = "database.db";
+    QString dbPath = QCoreApplication::applicationDirPath() + "./" + dbName;  // Use a relative path
+
+    QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
+    db.setDatabaseName(dbPath);
+
+    if (!db.open()) {
+        QMessageBox::critical(nullptr, "错误", "数据库打开失败：" + db.lastError().text());
+        return;
+    }
     // 获取点击的按钮所在的行
     QPushButton* dropButton = qobject_cast<QPushButton*>(sender());  // 获取发送信号的按钮
     QModelIndex buttonIndex = ui->tableView->indexAt(dropButton->pos());  // 获取按钮的索引
@@ -194,9 +129,7 @@ void Timetable::Drop_a_course()
     QStandardItemModel* model = static_cast<QStandardItemModel*>(ui->tableView->model());
     QString courseName = model->index(row, 0).data().toString();  // 获取课程名
     qDebug()<<"Drop courseName:" << courseName;
-    // QString courseTeacher = model->index(row, 1).data().toString();  // 获取任课教师
-    // QString coursePlace = model->index(row, 2).data().toString();  // 获取地点
-    // QString courseTime = model->index(row, 3).data().toString();  // 获取上课时间
+
 
     // 弹出确认对话框
     QMessageBox::StandardButton reply;
@@ -204,6 +137,7 @@ void Timetable::Drop_a_course()
                                   QMessageBox::Yes | QMessageBox::No);
     if (reply == QMessageBox::Yes) {
         // 在数据库中删除课程记录
+
         QSqlQuery query;
         query.prepare("DELETE FROM Student WHERE studentname = :studentName "
                       "AND coursename = :courseName");
@@ -217,8 +151,9 @@ void Timetable::Drop_a_course()
             // 删除记录失败
             QMessageBox::critical(this, "退课失败", "无法退选该课程，请稍后重试！");
         }
-    }
 
+    }
+    db.close();
 }
 
 void Timetable::on_ChooseCourse_clicked()

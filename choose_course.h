@@ -15,7 +15,11 @@ public:
     explicit Choose_course(const QString& username, QWidget *parent = nullptr);
     ~Choose_course();
 
+private slots:
+    void Choose_a_course();
+
 private:
+
     Ui::Choose_course *ui;
 
     QString username; //传过来的用户名
