@@ -12,18 +12,21 @@ SOURCES += \
     changepassword.cpp \
     choose_course.cpp \
     main.cpp \
+    teacher.cpp \
     widget.cpp \
     timetable.cpp
 
 HEADERS += \
     changepassword.h \
     choose_course.h \
+    teacher.h \
     timetable.h \
     widget.h
 
 FORMS += \
     changepassword.ui \
     choose_course.ui \
+    teacher.ui \
     timetable.ui \
     widget.ui
 

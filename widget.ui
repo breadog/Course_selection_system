@@ -126,6 +126,9 @@
 	padding-left:32px
 }</string>
     </property>
+    <property name="text">
+     <string>tea</string>
+    </property>
     <property name="placeholderText">
      <string>请输入账号</string>
     </property>
@@ -151,6 +154,9 @@
 	border-radius: 8px;
 	padding-left:32px
 }</string>
+    </property>
+    <property name="text">
+     <string>123</string>
     </property>
     <property name="echoMode">
      <enum>QLineEdit::Password</enum>

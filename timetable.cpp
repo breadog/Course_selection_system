@@ -6,13 +6,14 @@
 #include <QTableWidgetItem>
 #include <QVector>
 
-Timetable::Timetable(const QString& username, QWidget *parent)
+Timetable::Timetable(const QString& username, int id, QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::Timetable)
 {
     ui->setupUi(this);
 
     this->username = username;
+    this->id = id;
     ui->usernameLine->setText(username);
 
     QStandardItemModel* course_model = new QStandardItemModel();
@@ -36,39 +37,43 @@ Timetable::Timetable(const QString& username, QWidget *parent)
 
 
     struct StudentCourseInfo {
+        QString courseId;
         QString studentName;
         QString courseName;
         QString courseTime;
         QString coursePlace;
         QString courseTeacher;
     };
-
     QList<StudentCourseInfo> studentCourseList;
-    query.exec("SELECT Student.studentname, Course.coursename, Course.coursetime, Course.courseplace, Course.courseteacher "
-               "FROM Student "
-               "JOIN Course ON Student.coursename = Course.coursename");
-
-
-
+    //显示学生已选课程
+    query.prepare("SELECT User.name, Course.name, Course.time, Course.place, Course.teacher, Course.week , Course.id "
+               "FROM SC "
+               "INNER JOIN Course ON SC.course_id = Course.id "
+               "INNER JOIN User ON User.id = SC.student_id WHERE User.name = :username");
+    query.bindValue(":username", username);
+    query.exec();
     while (query.next()) {
         StudentCourseInfo studentCourseInfo;
+
         studentCourseInfo.studentName = query.value(0).toString();
         studentCourseInfo.courseName = query.value(1).toString();
         studentCourseInfo.courseTime = query.value(2).toString();
         studentCourseInfo.coursePlace = query.value(3).toString();
         studentCourseInfo.courseTeacher = query.value(4).toString();
+        studentCourseInfo.courseId = query.value(6).toString();
+        qDebug() <<"query(0) ：" <<query.value(0).toString();
 
         studentCourseList << studentCourseInfo;
 
         int row = 0; //行索引
         course_model->clear();
         for (const StudentCourseInfo& info : studentCourseList) {
-            // qDebug() << "info.studentName: "   << info.studentName;
-            // qDebug() << "info.courseName: "    << info.courseName;
-            // qDebug() << "info.courseTime: "    << info.courseTime;
-            // qDebug() << "info.coursePlace: "   << info.coursePlace;
-            // qDebug() << "info.courseTeacher: " << info.courseTeacher;
-            // qDebug() << "-------------------------";
+            qDebug() << "info.studentName: "   << info.studentName;
+            qDebug() << "info.courseName: "    << info.courseName;
+            qDebug() << "info.courseTime: "    << info.courseTime;
+            qDebug() << "info.coursePlace: "   << info.coursePlace;
+            qDebug() << "info.courseTeacher: " << info.courseTeacher;
+            qDebug() << "-------------------------";
 
 
             if(info.studentName == username)
@@ -83,12 +88,14 @@ Timetable::Timetable(const QString& username, QWidget *parent)
                 QStandardItem *itemTeacher = new QStandardItem(info.courseTeacher);
                 QStandardItem *itemPlace   = new QStandardItem(info.coursePlace);
                 QStandardItem *itemTime    = new QStandardItem(info.courseTime);
-
+                QStandardItem *itemId      = new QStandardItem(info.courseId);
 
                 course_model->setItem(row, 0, itemName);
                 course_model->setItem(row, 1, itemTeacher);
                 course_model->setItem(row, 2, itemPlace);
                 course_model->setItem(row, 3, itemTime);
+                course_model->setItem(row, 4, itemId);
+
 
                 QPushButton *drop_course = new QPushButton("退课");
                 ui->tableView->setIndexWidget(course_model->index(course_model->rowCount()-1, 4),drop_course);
@@ -125,9 +132,16 @@ void Timetable::Drop_a_course()
     int row = buttonIndex.row();  // 获取按钮所在的行
     // 获取要退课的课程信息
     QStandardItemModel* model = static_cast<QStandardItemModel*>(ui->tableView->model());
-    QString courseName = model->index(row, 0).data().toString();  // 获取课程名
-    qDebug()<<"Drop courseName:" << courseName;
+    int courseId = model->index(row, 4).data().toInt();  // 获取课程id
+    //qDebug()<<"Drop courseName:" << courseName;
 
+
+    QSqlQuery query1;
+    query1.prepare("SELECT * FROM User WHERE name = :username");
+    query1.bindValue(":username", username);
+    query1.exec();
+    query1.next();
+    int UserId = query1.value(3).toInt();
 
     // 弹出确认对话框
     QMessageBox::StandardButton reply;
@@ -137,10 +151,10 @@ void Timetable::Drop_a_course()
         // 在数据库中删除课程记录
 
         QSqlQuery query;
-        query.prepare("DELETE FROM Student WHERE studentname = :studentName "
-                      "AND coursename = :courseName");
-        query.bindValue(":studentName", username);
-        query.bindValue(":courseName", courseName);
+        query.prepare("DELETE FROM SC WHERE student_id = :student_id "
+                      "AND course_id = :course_id");
+        query.bindValue(":student_id", UserId);
+        query.bindValue(":course_id", courseId);
         if (query.exec()) {
             // 成功删除记录
             QMessageBox::information(this, "退课成功", "成功退选该课程！");
@@ -172,7 +186,7 @@ void Timetable::on_backtomain_clicked()
 
 void Timetable::on_refresh_clicked()
 {
-    Timetable *table = new Timetable(username);
+    Timetable *table = new Timetable(username, id);
     this->hide();
     table->show();
 }

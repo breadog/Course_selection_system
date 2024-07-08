@@ -106,7 +106,7 @@ QString ChangePassword::getUserPassword(QString &username) {
 
 void ChangePassword::on_pushButton_3_clicked()
 {
-    QString username = ui->lineEdit->text().trimmed();
-    Timetable *t = new Timetable(username);
-    t->show();
+    // QString username = ui->lineEdit->text().trimmed();
+    // Timetable *t = new Timetable(username, id);
+    // t->show();
 }

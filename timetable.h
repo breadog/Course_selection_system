@@ -22,7 +22,7 @@ class Timetable : public QWidget
     Q_OBJECT
 
 public:
-    explicit Timetable(const QString& username, QWidget *parent = nullptr);
+    explicit Timetable(const QString& username, int id, QWidget *parent = nullptr);
     ~Timetable();
 
 private slots:
@@ -41,6 +41,7 @@ private:
     Ui::Timetable *ui;
 
     QString username; //传过来的用户名
+    int id;
 };
 
 #endif // TIMETABLE_H

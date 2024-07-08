@@ -21,8 +21,7 @@ void Widget::Login()
     QString username = ui->accountLineEdit->text();
     QString password = ui->passwordLineEdit->text();
     QString role = ui->userTypeComboBox->currentText();
-    qDebug()<< "role:" << role;
-    Timetable *table = new Timetable(username);
+
 
     if (username.isEmpty() && password.isEmpty()) {
         //**空处理**
@@ -50,10 +49,11 @@ void Widget::Login()
     }
 
     QSqlQuery query;
-    query.prepare("SELECT * FROM User WHERE username = :username AND password = :password"); //AND user_role = :user_role
+    query.prepare("SELECT * FROM User WHERE name = :username AND password = :password");
     query.bindValue(":username", username);
     query.bindValue(":password", password);
     //query.bindValue(":user_role", role);
+
     if(!query.exec())
     {
         QMessageBox::critical(nullptr, "错误", "查询执行失败: " + database.lastError().text());
@@ -61,6 +61,9 @@ void Widget::Login()
     }
     if(query.next()) //用户存在
     {
+        int id = query.value("id").toInt();
+        Timetable *table = new Timetable(username, id);
+        Teacher *tea = new Teacher(username, id);
         QString userRole = query.value("user_role").toString();
         if(userRole == "学生")
         {
@@ -68,7 +71,7 @@ void Widget::Login()
             this->hide();
         }  else if (userRole == "老师") // 老师登录
         {
-           // table->show();
+            tea->show();
             this->hide();
         }
         else
@@ -82,24 +85,5 @@ void Widget::Login()
         return;
     }
 
-    query.prepare("SELECT * FROM User WHERE username = :username AND password = :password AND user_role = :user_role");
-    query.bindValue(":username", username);
-    query.bindValue(":password", password);
-    query.bindValue(":user_role", role);
-    if(!query.exec())
-    {
-        QMessageBox::critical(nullptr, "错误", "查询执行失败: " + database.lastError().text());
-        return;
-    }
-    if(query.next()) //登录后
-    {
-
-        table->show();
-        this->hide();
-
-    } else { //登录失败
-        QMessageBox::critical(nullptr, "错误", "查询执行失败: " + database.lastError().text());
-        return;
-    }
     database.close();
 }

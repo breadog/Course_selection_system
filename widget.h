@@ -9,7 +9,7 @@
 #include <QDebug>
 
 #include "timetable.h"
-
+#include "teacher.h"
 QT_BEGIN_NAMESPACE
 namespace Ui {
 class Widget;
