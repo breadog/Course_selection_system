@@ -15,8 +15,6 @@ Timetable::Timetable(const QString& username, QWidget *parent)
     this->username = username;
     ui->usernameLine->setText(username);
 
-    // QPushButton *dropcourse = new QPushButton(this);
-
     QStandardItemModel* course_model = new QStandardItemModel();
 
     ui->tableView->setModel(course_model);
@@ -65,12 +63,12 @@ Timetable::Timetable(const QString& username, QWidget *parent)
         int row = 0; //行索引
         course_model->clear();
         for (const StudentCourseInfo& info : studentCourseList) {
-            qDebug() << "info.studentName: "   << info.studentName;
-            qDebug() << "info.courseName: "    << info.courseName;
-            qDebug() << "info.courseTime: "    << info.courseTime;
-            qDebug() << "info.coursePlace: "   << info.coursePlace;
-            qDebug() << "info.courseTeacher: " << info.courseTeacher;
-            qDebug() << "-------------------------";
+            // qDebug() << "info.studentName: "   << info.studentName;
+            // qDebug() << "info.courseName: "    << info.courseName;
+            // qDebug() << "info.courseTime: "    << info.courseTime;
+            // qDebug() << "info.coursePlace: "   << info.coursePlace;
+            // qDebug() << "info.courseTeacher: " << info.courseTeacher;
+            // qDebug() << "-------------------------";
 
 
             if(info.studentName == username)
@@ -169,5 +167,20 @@ void Timetable::on_backtomain_clicked()
     w->show();
     this->hide();
     return;
+}
+
+
+void Timetable::on_refresh_clicked()
+{
+    Timetable *table = new Timetable(username);
+    this->hide();
+    table->show();
+}
+
+
+void Timetable::on_alterpassword_clicked()
+{
+    ChangePassword *pwd = new ChangePassword();
+    pwd->show();
 }
 

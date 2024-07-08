@@ -20,6 +20,8 @@ void Widget::Login()
 
     QString username = ui->accountLineEdit->text();
     QString password = ui->passwordLineEdit->text();
+    QString role = ui->userTypeComboBox->currentText();
+    qDebug()<< "role:" << role;
     Timetable *table = new Timetable(username);
 
     if (username.isEmpty() && password.isEmpty()) {
@@ -48,9 +50,42 @@ void Widget::Login()
     }
 
     QSqlQuery query;
-    query.prepare("SELECT * FROM User WHERE username = :username AND password = :password");
+    query.prepare("SELECT * FROM User WHERE username = :username AND password = :password"); //AND user_role = :user_role
     query.bindValue(":username", username);
     query.bindValue(":password", password);
+    //query.bindValue(":user_role", role);
+    if(!query.exec())
+    {
+        QMessageBox::critical(nullptr, "错误", "查询执行失败: " + database.lastError().text());
+        return;
+    }
+    if(query.next()) //用户存在
+    {
+        QString userRole = query.value("user_role").toString();
+        if(userRole == "学生")
+        {
+            table->show();
+            this->hide();
+        }  else if (userRole == "老师") // 老师登录
+        {
+           // table->show();
+            this->hide();
+        }
+        else
+        {
+            QMessageBox::critical(nullptr, "错误", "无效的用户角色");
+            return;
+        }
+
+    } else { //登录失败
+        QMessageBox::critical(nullptr, "错误", "用户名或密码错误");
+        return;
+    }
+
+    query.prepare("SELECT * FROM User WHERE username = :username AND password = :password AND user_role = :user_role");
+    query.bindValue(":username", username);
+    query.bindValue(":password", password);
+    query.bindValue(":user_role", role);
     if(!query.exec())
     {
         QMessageBox::critical(nullptr, "错误", "查询执行失败: " + database.lastError().text());
@@ -63,8 +98,8 @@ void Widget::Login()
         this->hide();
 
     } else { //登录失败
-        // QMessageBox::critical(nullptr, "用户名或密码错误");
-
+        QMessageBox::critical(nullptr, "错误", "查询执行失败: " + database.lastError().text());
+        return;
     }
     database.close();
 }

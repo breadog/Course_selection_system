@@ -9,17 +9,20 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    changepassword.cpp \
     choose_course.cpp \
     main.cpp \
     widget.cpp \
     timetable.cpp
 
 HEADERS += \
+    changepassword.h \
     choose_course.h \
     timetable.h \
     widget.h
 
 FORMS += \
+    changepassword.ui \
     choose_course.ui \
     timetable.ui \
     widget.ui

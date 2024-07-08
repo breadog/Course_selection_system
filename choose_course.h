@@ -3,6 +3,13 @@
 
 #include <QWidget>
 
+#include <QMessageBox>
+#include <QPushButton>
+#include <QSqlQuery>
+#include <QStandardItemModel>
+#include <QSqlError>
+#include <QDebug>
+
 namespace Ui {
 class Choose_course;
 }
@@ -17,6 +24,7 @@ public:
 
 private slots:
     void Choose_a_course();
+
 
 private:
 

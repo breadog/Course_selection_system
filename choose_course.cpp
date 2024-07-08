@@ -1,12 +1,7 @@
 #include "choose_course.h"
 #include "ui_choose_course.h"
 
-#include <QMessageBox>
-#include <QPushButton>
-#include <QSqlQuery>
-#include <QStandardItemModel>
-#include <QSqlError>
-#include <QDebug>
+
 
 Choose_course::Choose_course(const QString& username, QWidget *parent)
     : QWidget(parent)
@@ -45,10 +40,11 @@ Choose_course::Choose_course(const QString& username, QWidget *parent)
     };
 
     QList<StudentCourseInfo> studentCourseList;
-    query.prepare("SELECT DISTINCT c.coursename, c.coursetime, c.time, c.courseteacher, c.courseplace "
-                  "FROM Course c "
-                  "LEFT JOIN Student s ON c.coursename = s.coursename "
-                  "WHERE s.studentname IS NULL OR s.studentname != :username");
+    // query.prepare("SELECT DISTINCT c.coursename, c.coursetime, c.time, c.courseteacher, c.courseplace "
+    //               "FROM Course c "
+    //               "LEFT JOIN Student s ON c.coursename = s.coursename "
+    //               "WHERE s.studentname IS NULL OR s.studentname != :username");
+    query.prepare(("SELECT * FROM Course WHERE coursename NOT IN(SELECT coursename FROM Student WHERE studentname=:username)"));
     query.bindValue(":username", username);
     query.exec();
     //course_model->setColumnCount(4); // 设置模型的列数为4
@@ -152,6 +148,10 @@ void Choose_course::Choose_a_course()
         if (query.exec()) {
             // 成功选择记录
             QMessageBox::information(this, "选课成功", "成功选择该课程！");
+            Choose_course *c = new Choose_course(username);
+            c->show();
+            this->hide();
+
               // 从表格中移除对应的行
         } else {
             // 删除记录失败

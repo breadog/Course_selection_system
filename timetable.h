@@ -11,6 +11,7 @@
 #include <QDebug>
 
 #include "choose_course.h"
+#include "changepassword.h"
 
 namespace Ui {
 class Timetable;
@@ -25,12 +26,16 @@ public:
     ~Timetable();
 
 private slots:
-    void on_pushButton_clicked();
+
     void Drop_a_course();
 
     void on_ChooseCourse_clicked();
 
     void on_backtomain_clicked();
+
+    void on_refresh_clicked();
+
+    void on_alterpassword_clicked();
 
 private:
     Ui::Timetable *ui;
