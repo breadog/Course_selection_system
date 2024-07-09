@@ -1,6 +1,6 @@
 QT       += core gui
 QT       += sql network
-QT       += xlsx
+#QT       += xlsx
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -19,7 +19,9 @@ SOURCES += \
     showallstudent.cpp \
     teacher.cpp \
     widget.cpp \
-    timetable.cpp
+    timetable.cpp \
+    t_mainwindow.cpp \
+    teacherinfo.cpp
 
 HEADERS += \
     changepassword.h \
@@ -29,7 +31,9 @@ HEADERS += \
     showallstudent.h \
     teacher.h \
     timetable.h \
-    widget.h
+    widget.h \
+    t_mainwindow.h \
+    teacherinfo.h
 
 FORMS += \
     changepassword.ui \
@@ -39,7 +43,9 @@ FORMS += \
     showallstudent.ui \
     teacher.ui \
     timetable.ui \
-    widget.ui
+    widget.ui \
+    t_mainwindow.ui \
+    teacherinfo.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

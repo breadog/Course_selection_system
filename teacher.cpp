@@ -8,7 +8,7 @@
 #include <QSqlError>
 #include <QDebug>
 #include <QPushButton>
-#include <QtXlsx/xlsxdocument.h>
+//#include <QtXlsx/xlsxdocument.h>
 
 Teacher::Teacher(const QString& username, int id, QWidget *parent)
     : QWidget(parent)
@@ -115,7 +115,7 @@ Teacher::~Teacher()
     delete ui;
 }
 
-Teacher::Give_score()
+void Teacher::Give_score()
 {
     QModelIndexList selectedRows = ui->tableView->selectionModel()->selectedRows();
     qDebug()<<"selectedRows:"<<selectedRows;
@@ -138,7 +138,6 @@ Teacher::Give_score()
 
         if (!db.open()) {
             QMessageBox::critical(nullptr, "错误", "数据库打开失败：" + db.lastError().text());
-            return -1;
         }
         QSqlQuery query;
         query.prepare("SELECT student_id, course_id FROM SC "

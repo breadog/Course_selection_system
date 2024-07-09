@@ -19,7 +19,7 @@ public:
     ~Teacher();
 
 private slots:
-    Give_score();
+    void Give_score();
 
 
     void on_backtomain_clicked();

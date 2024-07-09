@@ -3,13 +3,11 @@
 
 #include <QMainWindow>
 
-#include "widget.h"
 #include "changepassword.h"
-// #include "coursemanagement.h"
-// #include "userinfo.h"
-// #include "studentmanagement.h"
+#include "widget.h"
+#include "teacherinfo.h"
 #include "teacher.h"
-
+#include "showallstudent.h"
 namespace Ui {
 class T_MainWindow;
 }
@@ -23,7 +21,6 @@ public:
     ~T_MainWindow();
 
 private slots:
-
     void on_toolButton_clicked();
 
     void on_toolButton_2_clicked();
@@ -34,24 +31,15 @@ private slots:
 
     void on_toolButton_5_clicked();
 
-
     void on_toolButton_6_clicked();
-
-    void on_toolButton_6_triggered(QAction *arg1);
 
 private:
     Ui::T_MainWindow *ui;
-
-    Teacher *teacherCourse;
-    UserInfo *userInfo;
-    // StudentManagement *studentManagement;
-    // CourseManagement *courseManagement;
     ChangePassword *changePassword;
-
+    TeacherInfo *teacherInfo;
+//    Teacher *teacher;
     QString username;
-
     int id;
 };
-
 
 #endif // T_MAINWINDOW_H
