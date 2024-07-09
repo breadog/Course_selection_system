@@ -11,6 +11,7 @@
 #include "timetable.h"
 #include "teacher.h"
 #include "t_mainwindow.h"
+#include "s_mainwindow.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {

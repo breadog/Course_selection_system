@@ -172,21 +172,6 @@ void Timetable::Drop_a_course()
     db.close();
 }
 
-void Timetable::on_ChooseCourse_clicked()
-{
-    Choose_course *choose = new Choose_course(username);
-    choose->show();
-}
-
-
-void Timetable::on_backtomain_clicked()
-{
-    Widget *w = new Widget;
-    w->show();
-    this->hide();
-    return;
-}
-
 
 void Timetable::on_refresh_clicked()
 {
@@ -195,17 +180,4 @@ void Timetable::on_refresh_clicked()
     table->show();
 }
 
-
-void Timetable::on_alterpassword_clicked()
-{
-    ChangePassword *pwd = new ChangePassword(username);
-    pwd->show();
-}
-
-
-void Timetable::on_mycourse_clicked()
-{
-    schooltimetable *mycourse = new schooltimetable(username, id);
-    mycourse->show();
-}
 

@@ -30,15 +30,7 @@ private slots:
 
     void Drop_a_course();
 
-    void on_ChooseCourse_clicked();
-
-    void on_backtomain_clicked();
-
     void on_refresh_clicked();
-
-    void on_alterpassword_clicked();
-
-    void on_mycourse_clicked();
 
 private:
     Ui::Timetable *ui;

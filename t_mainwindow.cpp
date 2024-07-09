@@ -48,6 +48,15 @@ void T_MainWindow::on_personinfo_clicked()
 
 void T_MainWindow::on_teachinfo_clicked()
 {
+    QString dbName = "database.db";
+    QString dbPath = QCoreApplication::applicationDirPath() + "./" + dbName;  // Use a relative path
+
+    QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
+    db.setDatabaseName(dbPath);
+    if (!db.open()) {
+        QMessageBox::critical(nullptr, "错误", "数据库打开失败：" + db.lastError().text());
+        return;
+    }
     Teacher *tea = new Teacher(username, id);
     tea->show();
 }
@@ -55,6 +64,15 @@ void T_MainWindow::on_teachinfo_clicked()
 
 void T_MainWindow::on_courseinfo_clicked()
 {
+    QString dbName = "database.db";
+    QString dbPath = QCoreApplication::applicationDirPath() + "./" + dbName;  // Use a relative path
+
+    QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
+    db.setDatabaseName(dbPath);
+    if (!db.open()) {
+        QMessageBox::critical(nullptr, "错误", "数据库打开失败：" + db.lastError().text());
+        return;
+    }
     Showallstudent *stuall = new Showallstudent();
     stuall->show();
 }

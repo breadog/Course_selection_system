@@ -42,7 +42,7 @@
         <widget class="QToolButton" name="teachinfo">
          <property name="styleSheet">
           <string notr="true">/* 默认 */
-QToolButton{   
+QToolButton{
 	border-top: 3px outset transparent;           /* 上边框宽度3像素、突出显示、颜色为透明 */
 	border-bottom: 7px outset transparent;
 	border-right: 3px outset transparent;
@@ -60,7 +60,7 @@ QToolButton:hover{
 /* 点击和按下 */
 QToolButton:pressed,QToolButton:checked{
 	border-left: 3px outset rgb(93, 95, 97);  /* 左边框宽度3像素、突出显示、颜色为深深灰 */
-	background-color: rgb(246, 246, 246);	
+	background-color: rgb(246, 246, 246);
 }
 
 QPushButton:default {
@@ -92,7 +92,7 @@ QPushButton:default {
         <widget class="QToolButton" name="toolButton_4">
          <property name="styleSheet">
           <string notr="true">/* 默认 */
-QToolButton{   
+QToolButton{
 	border-top: 3px outset transparent;           /* 上边框宽度3像素、突出显示、颜色为透明 */
 	border-bottom: 7px outset transparent;
 	border-right: 3px outset transparent;
@@ -110,7 +110,7 @@ QToolButton:hover{
 /* 点击和按下 */
 QToolButton:pressed,QToolButton:checked{
 	border-left: 3px outset rgb(93, 95, 97);  /* 左边框宽度3像素、突出显示、颜色为深深灰 */
-	background-color: rgb(246, 246, 246);	
+	background-color: rgb(246, 246, 246);
 }
 
 QPushButton:default {
@@ -142,7 +142,7 @@ QPushButton:default {
         <widget class="QToolButton" name="passwordalter">
          <property name="styleSheet">
           <string notr="true">/* 默认 */
-QToolButton{   
+QToolButton{
 	border-top: 3px outset transparent;           /* 上边框宽度3像素、突出显示、颜色为透明 */
 	border-bottom: 7px outset transparent;
 	border-right: 3px outset transparent;
@@ -160,7 +160,7 @@ QToolButton:hover{
 /* 点击和按下 */
 QToolButton:pressed,QToolButton:checked{
 	border-left: 3px outset rgb(93, 95, 97);  /* 左边框宽度3像素、突出显示、颜色为深深灰 */
-	background-color: rgb(246, 246, 246);	
+	background-color: rgb(246, 246, 246);
 }
 
 QPushButton:default {
@@ -192,7 +192,7 @@ QPushButton:default {
         <widget class="QToolButton" name="personinfo">
          <property name="styleSheet">
           <string notr="true">/* 默认 */
-QToolButton{   
+QToolButton{
 	border-top: 3px outset transparent;           /* 上边框宽度3像素、突出显示、颜色为透明 */
 	border-bottom: 7px outset transparent;
 	border-right: 3px outset transparent;
@@ -210,7 +210,7 @@ QToolButton:hover{
 /* 点击和按下 */
 QToolButton:pressed,QToolButton:checked{
 	border-left: 3px outset rgb(93, 95, 97);  /* 左边框宽度3像素、突出显示、颜色为深深灰 */
-	background-color: rgb(246, 246, 246);	
+	background-color: rgb(246, 246, 246);
 }
 
 QPushButton:default {
@@ -242,7 +242,7 @@ QPushButton:default {
         <widget class="QToolButton" name="exit">
          <property name="styleSheet">
           <string notr="true">/* 默认 */
-QToolButton{   
+QToolButton{
 	border-top: 3px outset transparent;           /* 上边框宽度3像素、突出显示、颜色为透明 */
 	border-bottom: 7px outset transparent;
 	border-right: 3px outset transparent;
@@ -260,7 +260,7 @@ QToolButton:hover{
 /* 点击和按下 */
 QToolButton:pressed,QToolButton:checked{
 	border-left: 3px outset rgb(93, 95, 97);  /* 左边框宽度3像素、突出显示、颜色为深深灰 */
-	background-color: rgb(246, 246, 246);	
+	background-color: rgb(246, 246, 246);
 }
 
 QPushButton:default {
@@ -292,7 +292,7 @@ QPushButton:default {
         <widget class="QToolButton" name="courseinfo">
          <property name="styleSheet">
           <string notr="true">/* 默认 */
-QToolButton{   
+QToolButton{
 	border-top: 3px outset transparent;           /* 上边框宽度3像素、突出显示、颜色为透明 */
 	border-bottom: 7px outset transparent;
 	border-right: 3px outset transparent;
@@ -310,7 +310,7 @@ QToolButton:hover{
 /* 点击和按下 */
 QToolButton:pressed,QToolButton:checked{
 	border-left: 3px outset rgb(93, 95, 97);  /* 左边框宽度3像素、突出显示、颜色为深深灰 */
-	background-color: rgb(246, 246, 246);	
+	background-color: rgb(246, 246, 246);
 }
 
 QPushButton:default {

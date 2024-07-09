@@ -62,14 +62,15 @@ void Widget::Login()
     if(query.next()) //用户存在
     {
         int id = query.value("id").toInt();
-        Timetable *table = new Timetable(username, id);
+//        Timetable *table = new Timetable(username, id);
         //Teacher *tea = new Teacher(username, id);
+        S_MainWindow *stu = new S_MainWindow(username,id);
         T_MainWindow *tea = new T_MainWindow(username,id);
 
         QString userRole = query.value("user_role").toString();
         if(userRole == "学生")
         {
-            table->show();
+            stu->show();
             this->hide();
         }  else if (userRole == "老师") // 老师登录
         {

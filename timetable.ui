@@ -16,9 +16,9 @@
   <widget class="QTableView" name="tableView">
    <property name="geometry">
     <rect>
-     <x>140</x>
+     <x>60</x>
      <y>80</y>
-     <width>811</width>
+     <width>891</width>
      <height>451</height>
     </rect>
    </property>
@@ -26,9 +26,9 @@
   <widget class="QLineEdit" name="welcome">
    <property name="geometry">
     <rect>
-     <x>160</x>
+     <x>130</x>
      <y>20</y>
-     <width>51</width>
+     <width>81</width>
      <height>21</height>
     </rect>
    </property>
@@ -46,45 +46,6 @@
     </rect>
    </property>
   </widget>
-  <widget class="QToolButton" name="ChooseCourse">
-   <property name="geometry">
-    <rect>
-     <x>13</x>
-     <y>130</y>
-     <width>81</width>
-     <height>51</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>进入选课</string>
-   </property>
-  </widget>
-  <widget class="QToolButton" name="alterpassword">
-   <property name="geometry">
-    <rect>
-     <x>13</x>
-     <y>310</y>
-     <width>81</width>
-     <height>51</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>修改密码</string>
-   </property>
-  </widget>
-  <widget class="QToolButton" name="backtomain">
-   <property name="geometry">
-    <rect>
-     <x>13</x>
-     <y>420</y>
-     <width>81</width>
-     <height>51</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>返回登录</string>
-   </property>
-  </widget>
   <widget class="QPushButton" name="refresh">
    <property name="geometry">
     <rect>
@@ -96,19 +57,6 @@
    </property>
    <property name="text">
     <string>刷新</string>
-   </property>
-  </widget>
-  <widget class="QToolButton" name="mycourse">
-   <property name="geometry">
-    <rect>
-     <x>13</x>
-     <y>220</y>
-     <width>81</width>
-     <height>51</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>我的选课</string>
    </property>
   </widget>
  </widget>

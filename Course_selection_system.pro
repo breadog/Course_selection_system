@@ -21,7 +21,9 @@ SOURCES += \
     widget.cpp \
     timetable.cpp \
     t_mainwindow.cpp \
-    teacherinfo.cpp
+    teacherinfo.cpp \
+    s_mainwindow.cpp \
+    studentinfo.cpp
 
 HEADERS += \
     changepassword.h \
@@ -33,7 +35,9 @@ HEADERS += \
     timetable.h \
     widget.h \
     t_mainwindow.h \
-    teacherinfo.h
+    teacherinfo.h \
+    s_mainwindow.h \
+    studentinfo.h
 
 FORMS += \
     changepassword.ui \
@@ -45,7 +49,9 @@ FORMS += \
     timetable.ui \
     widget.ui \
     t_mainwindow.ui \
-    teacherinfo.ui
+    teacherinfo.ui \
+    s_mainwindow.ui \
+    studentinfo.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
