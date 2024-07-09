@@ -8,6 +8,8 @@
 #include <QSqlError>
 #include <QDebug>
 #include <QPushButton>
+#include <QtXlsx/xlsxdocument.h>
+
 Teacher::Teacher(const QString& username, int id, QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::Teacher)
@@ -190,5 +192,11 @@ void Teacher::on_showallstu_clicked()
 {
     Showallstudent *stuall = new Showallstudent();
     stuall->show();
+}
+
+
+void Teacher::on_addstu_clicked()
+{
+
 }
 

@@ -28,6 +28,8 @@ private slots:
 
     void on_showallstu_clicked();
 
+    void on_addstu_clicked();
+
 private:
     Ui::Teacher *ui;
 

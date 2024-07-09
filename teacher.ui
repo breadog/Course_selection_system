@@ -23,7 +23,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QPushButton" name="addcourse">
+  <widget class="QPushButton" name="addstu">
    <property name="geometry">
     <rect>
      <x>30</x>
@@ -33,7 +33,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>添加课程</string>
+    <string>添加学生</string>
    </property>
   </widget>
   <widget class="QPushButton" name="backtomain">
