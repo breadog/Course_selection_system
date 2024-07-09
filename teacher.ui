@@ -36,17 +36,46 @@
     <string>添加课程</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_2">
+  <widget class="QPushButton" name="backtomain">
    <property name="geometry">
     <rect>
      <x>30</x>
-     <y>220</y>
+     <y>340</y>
      <width>71</width>
      <height>51</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
    <property name="text">
-    <string>PushButton</string>
+    <string>返回登录</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="refresh">
+   <property name="geometry">
+    <rect>
+     <x>770</x>
+     <y>30</y>
+     <width>75</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>刷新</string>
+   </property>
+  </widget>
+  <widget class="QToolButton" name="showallstu">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>220</y>
+     <width>81</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>查看所有学生</string>
    </property>
   </widget>
  </widget>

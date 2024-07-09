@@ -1,5 +1,5 @@
 QT       += core gui
-QT       += sql
+QT       += sql network
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += c++11
@@ -11,7 +11,9 @@ CONFIG += c++11
 SOURCES += \
     changepassword.cpp \
     choose_course.cpp \
+    enter_scores.cpp \
     main.cpp \
+    showallstudent.cpp \
     teacher.cpp \
     widget.cpp \
     timetable.cpp \
@@ -20,6 +22,8 @@ SOURCES += \
 HEADERS += \
     changepassword.h \
     choose_course.h \
+    enter_scores.h \
+    showallstudent.h \
     teacher.h \
     timetable.h \
     widget.h \
@@ -28,6 +32,8 @@ HEADERS += \
 FORMS += \
     changepassword.ui \
     choose_course.ui \
+    enter_scores.ui \
+    showallstudent.ui \
     teacher.ui \
     timetable.ui \
     widget.ui \
