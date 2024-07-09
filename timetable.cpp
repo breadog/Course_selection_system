@@ -43,10 +43,11 @@ Timetable::Timetable(const QString& username, int id, QWidget *parent)
         QString courseTime;
         QString coursePlace;
         QString courseTeacher;
+        int courseScore;
     };
     QList<StudentCourseInfo> studentCourseList;
     //显示学生已选课程
-    query.prepare("SELECT User.name, Course.name, Course.time, Course.place, Course.teacher, Course.week , Course.id "
+    query.prepare("SELECT User.name, Course.name, Course.time, Course.place, Course.teacher, Course.week , Course.id , SC.score "
                "FROM SC "
                "INNER JOIN Course ON SC.course_id = Course.id "
                "INNER JOIN User ON User.id = SC.student_id WHERE User.name = :username");
@@ -61,26 +62,26 @@ Timetable::Timetable(const QString& username, int id, QWidget *parent)
         studentCourseInfo.coursePlace = query.value(3).toString();
         studentCourseInfo.courseTeacher = query.value(4).toString();
         studentCourseInfo.courseId = query.value(6).toString();
-        qDebug() <<"query(0) ：" <<query.value(0).toString();
+        studentCourseInfo.courseScore = query.value(7).toInt();
 
         studentCourseList << studentCourseInfo;
 
         int row = 0; //行索引
         course_model->clear();
         for (const StudentCourseInfo& info : studentCourseList) {
-            qDebug() << "info.studentName: "   << info.studentName;
-            qDebug() << "info.courseName: "    << info.courseName;
-            qDebug() << "info.courseTime: "    << info.courseTime;
-            qDebug() << "info.coursePlace: "   << info.coursePlace;
-            qDebug() << "info.courseTeacher: " << info.courseTeacher;
-            qDebug() << "-------------------------";
+            // qDebug() << "info.studentName: "   << info.studentName;
+            // qDebug() << "info.courseName: "    << info.courseName;
+            // qDebug() << "info.courseTime: "    << info.courseTime;
+            // qDebug() << "info.coursePlace: "   << info.coursePlace;
+            // qDebug() << "info.courseTeacher: " << info.courseTeacher;
+            // qDebug() << "-------------------------";
 
 
             if(info.studentName == username)
             {
 
                 QStringList table_h_headers;
-                table_h_headers  << "课程名" << "任课教师" << "地点" << "上课时间"<< " ";//<< "课序号"<< dropcourse;
+                table_h_headers  << "课程名" << "任课教师" << "地点" << "上课时间"<< "成绩" <<" ";//<< "课序号"<< dropcourse;
 
                 course_model->setHorizontalHeaderLabels(table_h_headers);
 
@@ -89,16 +90,19 @@ Timetable::Timetable(const QString& username, int id, QWidget *parent)
                 QStandardItem *itemPlace   = new QStandardItem(info.coursePlace);
                 QStandardItem *itemTime    = new QStandardItem(info.courseTime);
                 QStandardItem *itemId      = new QStandardItem(info.courseId);
+                QStandardItem *itemScore   = new QStandardItem(QString::number(info.courseScore));
 
                 course_model->setItem(row, 0, itemName);
                 course_model->setItem(row, 1, itemTeacher);
                 course_model->setItem(row, 2, itemPlace);
                 course_model->setItem(row, 3, itemTime);
-                course_model->setItem(row, 4, itemId);
+                course_model->setItem(row, 4, itemScore);
+                course_model->setItem(row, 5, itemId);
+
 
 
                 QPushButton *drop_course = new QPushButton("退课");
-                ui->tableView->setIndexWidget(course_model->index(course_model->rowCount()-1, 4),drop_course);
+                ui->tableView->setIndexWidget(course_model->index(course_model->rowCount()-1, 5),drop_course);
                 connect(drop_course, &QPushButton::clicked, this, &Timetable::Drop_a_course);
 
                 ++row;
@@ -132,7 +136,7 @@ void Timetable::Drop_a_course()
     int row = buttonIndex.row();  // 获取按钮所在的行
     // 获取要退课的课程信息
     QStandardItemModel* model = static_cast<QStandardItemModel*>(ui->tableView->model());
-    int courseId = model->index(row, 4).data().toInt();  // 获取课程id
+    int courseId = model->index(row, 5).data().toInt();  // 获取课程id
     //qDebug()<<"Drop courseName:" << courseName;
 
 
@@ -194,7 +198,7 @@ void Timetable::on_refresh_clicked()
 
 void Timetable::on_alterpassword_clicked()
 {
-    ChangePassword *pwd = new ChangePassword();
+    ChangePassword *pwd = new ChangePassword(username);
     pwd->show();
 }
 

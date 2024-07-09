@@ -1,8 +1,6 @@
 #include "choose_course.h"
 #include "ui_choose_course.h"
 
-
-
 Choose_course::Choose_course(const QString& username, QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::Choose_course)
