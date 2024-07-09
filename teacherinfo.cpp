@@ -83,13 +83,26 @@ void TeacherInfo::on_toolButton_clicked()
 }
 
 void TeacherInfo::on_toolButton_2_clicked() {
-    // 重置控件到原始值
-    ui->name_3->setText(originalName);
-    ui->gender_3->setText(originalGender);
-    ui->ethnicity_3->setText(originalEthnicity);
-    ui->title_3->setText(originalTitle);
-    ui->department_3->setText(originalDepartment);
-    ui->email_3->setText(originalEmail);
-    // 如果有头像显示，也需要重置头像
+    QSqlQuery query;
+    query.prepare("SELECT * FROM Teacher WHERE name = :username");
+    query.bindValue(":username", username);
+    query.exec();
+    if (query.first()) {
+        originalName = query.value("name").toString();
+        originalGender = query.value("gender").toString();
+        originalEthnicity = query.value("ethnicity").toString();
+        originalTitle = query.value("title").toString();
+        originalDepartment = query.value("department").toString();
+        originalEmail = query.value("email").toString();
+
+
+        // 重置控件到原始值
+        ui->name_3->setText(originalName);
+        ui->gender_3->setText(originalGender);
+        ui->ethnicity_3->setText(originalEthnicity);
+        ui->title_3->setText(originalTitle);
+        ui->department_3->setText(originalDepartment);
+        ui->email_3->setText(originalEmail);
+    }
 }
 
