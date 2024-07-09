@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1000</width>
-    <height>620</height>
+    <width>833</width>
+    <height>527</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,66 +16,24 @@
   <widget class="QTableView" name="tableView">
    <property name="geometry">
     <rect>
-     <x>140</x>
-     <y>80</y>
+     <x>10</x>
+     <y>50</y>
      <width>811</width>
      <height>451</height>
     </rect>
    </property>
   </widget>
-  <widget class="QPushButton" name="addstu">
-   <property name="geometry">
-    <rect>
-     <x>30</x>
-     <y>100</y>
-     <width>71</width>
-     <height>51</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>添加学生</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="backtomain">
-   <property name="geometry">
-    <rect>
-     <x>30</x>
-     <y>340</y>
-     <width>71</width>
-     <height>51</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true"/>
-   </property>
-   <property name="text">
-    <string>返回登录</string>
-   </property>
-  </widget>
   <widget class="QPushButton" name="refresh">
    <property name="geometry">
     <rect>
-     <x>770</x>
-     <y>30</y>
+     <x>670</x>
+     <y>10</y>
      <width>75</width>
      <height>23</height>
     </rect>
    </property>
    <property name="text">
     <string>刷新</string>
-   </property>
-  </widget>
-  <widget class="QToolButton" name="showallstu">
-   <property name="geometry">
-    <rect>
-     <x>30</x>
-     <y>220</y>
-     <width>81</width>
-     <height>51</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>查看所有学生</string>
    </property>
   </widget>
  </widget>

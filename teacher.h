@@ -22,13 +22,7 @@ private slots:
     void Give_score();
 
 
-    void on_backtomain_clicked();
-
     void on_refresh_clicked();
-
-    void on_showallstu_clicked();
-
-    void on_addstu_clicked();
 
 private:
     Ui::Teacher *ui;

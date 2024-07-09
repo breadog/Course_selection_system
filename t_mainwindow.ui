@@ -39,7 +39,7 @@
         <number>0</number>
        </property>
        <item row="1" column="0">
-        <widget class="QToolButton" name="toolButton_2">
+        <widget class="QToolButton" name="teachinfo">
          <property name="styleSheet">
           <string notr="true">/* 默认 */
 QToolButton{   
@@ -139,7 +139,7 @@ QPushButton:default {
         </widget>
        </item>
        <item row="4" column="0">
-        <widget class="QToolButton" name="toolButton_5">
+        <widget class="QToolButton" name="passwordalter">
          <property name="styleSheet">
           <string notr="true">/* 默认 */
 QToolButton{   
@@ -189,7 +189,7 @@ QPushButton:default {
         </widget>
        </item>
        <item row="0" column="0">
-        <widget class="QToolButton" name="toolButton">
+        <widget class="QToolButton" name="personinfo">
          <property name="styleSheet">
           <string notr="true">/* 默认 */
 QToolButton{   
@@ -239,7 +239,7 @@ QPushButton:default {
         </widget>
        </item>
        <item row="5" column="0">
-        <widget class="QToolButton" name="toolButton_6">
+        <widget class="QToolButton" name="exit">
          <property name="styleSheet">
           <string notr="true">/* 默认 */
 QToolButton{   
@@ -289,7 +289,7 @@ QPushButton:default {
         </widget>
        </item>
        <item row="2" column="0">
-        <widget class="QToolButton" name="toolButton_3">
+        <widget class="QToolButton" name="courseinfo">
          <property name="styleSheet">
           <string notr="true">/* 默认 */
 QToolButton{   
@@ -352,7 +352,7 @@ QPushButton:default {
      <x>0</x>
      <y>0</y>
      <width>894</width>
-     <height>30</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>

@@ -33,6 +33,16 @@ private slots:
 
     void on_toolButton_6_clicked();
 
+    void on_personinfo_clicked();
+
+    void on_teachinfo_clicked();
+
+    void on_courseinfo_clicked();
+
+    void on_passwordalter_clicked();
+
+    void on_exit_clicked();
+
 private:
     Ui::T_MainWindow *ui;
     ChangePassword *changePassword;

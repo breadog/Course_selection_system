@@ -63,9 +63,9 @@ void Widget::Login()
     {
         int id = query.value("id").toInt();
         Timetable *table = new Timetable(username, id);
-//        Teacher *tea = new Teacher(username, id);
-
+        //Teacher *tea = new Teacher(username, id);
         T_MainWindow *tea = new T_MainWindow(username,id);
+
         QString userRole = query.value("user_role").toString();
         if(userRole == "学生")
         {

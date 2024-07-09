@@ -17,9 +17,9 @@ T_MainWindow::T_MainWindow(const QString& username,int id,QWidget *parent) :
 //    ui->stackedWidget->addWidget(teacher);
     ui->stackedWidget->addWidget(changePassword);
 
-    connect(ui->toolButton, &QToolButton::clicked, this, &T_MainWindow::on_toolButton_clicked);
+    //connect(ui->personinfo, &QToolButton::clicked, this, &T_MainWindow::on_toolButton_clicked);
 //    connect(ui->toolButton_2, &QToolButton::clicked, this, &T_MainWindow::on_toolButton_2_clicked);
-    connect(ui->toolButton_5, &QToolButton::clicked, this, &T_MainWindow::on_toolButton_5_clicked);
+    // connect(ui->toolButton_5, &QToolButton::clicked, this, &T_MainWindow::on_toolButton_5_clicked);
 
 }
 
@@ -28,7 +28,7 @@ T_MainWindow::~T_MainWindow()
     delete ui;
 }
 
-void T_MainWindow::on_toolButton_clicked()
+void T_MainWindow::on_personinfo_clicked()
 {
     QString dbName = "database.db";
     QString dbPath = QCoreApplication::applicationDirPath() + "./" + dbName;  // Use a relative path
@@ -43,32 +43,24 @@ void T_MainWindow::on_toolButton_clicked()
     ui->stackedWidget->setCurrentWidget(teacherInfo);
 }
 
-void T_MainWindow::on_toolButton_2_clicked()
+
+
+
+void T_MainWindow::on_teachinfo_clicked()
 {
-    QString dbName = "database.db";
-    QString dbPath = QCoreApplication::applicationDirPath() + "./" + dbName;  // Use a relative path
-
-    QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
-    db.setDatabaseName(dbPath);
-
-    if (!db.open()) {
-        QMessageBox::critical(nullptr, "错误", "数据库打开失败：" + db.lastError().text());
-        return;
-    }
-//    ui->stackedWidget->setCurrentWidget(teacher);
+    Teacher *tea = new Teacher(username, id);
+    tea->show();
 }
 
-void T_MainWindow::on_toolButton_3_clicked()
-{
 
+void T_MainWindow::on_courseinfo_clicked()
+{
+    Showallstudent *stuall = new Showallstudent();
+    stuall->show();
 }
 
-void T_MainWindow::on_toolButton_4_clicked()
-{
 
-}
-
-void T_MainWindow::on_toolButton_5_clicked()
+void T_MainWindow::on_passwordalter_clicked()
 {
     QString dbName = "database.db";
     QString dbPath = QCoreApplication::applicationDirPath() + "./" + dbName;  // Use a relative path
@@ -83,10 +75,12 @@ void T_MainWindow::on_toolButton_5_clicked()
     ui->stackedWidget->setCurrentWidget(changePassword);
 }
 
-void T_MainWindow::on_toolButton_6_clicked()
+
+void T_MainWindow::on_exit_clicked()
 {
     Widget *w = new Widget;
     w->show();
     this->hide();
     return;
 }
+

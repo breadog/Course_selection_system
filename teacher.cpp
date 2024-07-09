@@ -167,18 +167,6 @@ void Teacher::Give_score()
 
 }
 
-
-
-
-void Teacher::on_backtomain_clicked()
-{
-    Widget *w = new Widget;
-    w->show();
-    this->hide();
-    return;
-}
-
-
 void Teacher::on_refresh_clicked()
 {
     Teacher *tea = new Teacher(username, id);
@@ -187,15 +175,5 @@ void Teacher::on_refresh_clicked()
 }
 
 
-void Teacher::on_showallstu_clicked()
-{
-    Showallstudent *stuall = new Showallstudent();
-    stuall->show();
-}
 
-
-void Teacher::on_addstu_clicked()
-{
-
-}
 
