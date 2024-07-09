@@ -12,6 +12,7 @@
 
 #include "choose_course.h"
 #include "changepassword.h"
+#include "schooltimetable.h"
 
 namespace Ui {
 class Timetable;
@@ -36,6 +37,8 @@ private slots:
     void on_refresh_clicked();
 
     void on_alterpassword_clicked();
+
+    void on_mycourse_clicked();
 
 private:
     Ui::Timetable *ui;

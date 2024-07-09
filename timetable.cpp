@@ -202,3 +202,10 @@ void Timetable::on_alterpassword_clicked()
     pwd->show();
 }
 
+
+void Timetable::on_mycourse_clicked()
+{
+    schooltimetable *mycourse = new schooltimetable(username, id);
+    mycourse->show();
+}
+

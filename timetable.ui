@@ -63,7 +63,7 @@
    <property name="geometry">
     <rect>
      <x>13</x>
-     <y>240</y>
+     <y>310</y>
      <width>81</width>
      <height>51</height>
     </rect>
@@ -76,7 +76,7 @@
    <property name="geometry">
     <rect>
      <x>13</x>
-     <y>360</y>
+     <y>420</y>
      <width>81</width>
      <height>51</height>
     </rect>
@@ -96,6 +96,19 @@
    </property>
    <property name="text">
     <string>刷新</string>
+   </property>
+  </widget>
+  <widget class="QToolButton" name="mycourse">
+   <property name="geometry">
+    <rect>
+     <x>13</x>
+     <y>220</y>
+     <width>81</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>我的选课</string>
    </property>
   </widget>
  </widget>

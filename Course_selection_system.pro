@@ -15,6 +15,7 @@ SOURCES += \
     choose_course.cpp \
     enter_scores.cpp \
     main.cpp \
+    schooltimetable.cpp \
     showallstudent.cpp \
     teacher.cpp \
     widget.cpp \
@@ -24,6 +25,7 @@ HEADERS += \
     changepassword.h \
     choose_course.h \
     enter_scores.h \
+    schooltimetable.h \
     showallstudent.h \
     teacher.h \
     timetable.h \
@@ -33,6 +35,7 @@ FORMS += \
     changepassword.ui \
     choose_course.ui \
     enter_scores.ui \
+    schooltimetable.ui \
     showallstudent.ui \
     teacher.ui \
     timetable.ui \
