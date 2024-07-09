@@ -38,6 +38,7 @@ private:
     ChangePassword *changePassword;
     TeacherInfo *teacherInfo;
 //    Teacher *teacher;
+
     QString username;
     int id;
 };

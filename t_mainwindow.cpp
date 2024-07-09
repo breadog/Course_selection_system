@@ -13,7 +13,6 @@ T_MainWindow::T_MainWindow(const QString& username,int id,QWidget *parent) :
     changePassword = new ChangePassword(username,this);
 //    teacher = new Teacher(username,id,this);
 
-
     ui->stackedWidget->addWidget(teacherInfo);
 //    ui->stackedWidget->addWidget(teacher);
     ui->stackedWidget->addWidget(changePassword);

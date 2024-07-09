@@ -31,6 +31,7 @@ TeacherInfo::TeacherInfo(const QString& username, int id,QWidget *parent) :
         originalDepartment = query.value("department").toString();
         originalEmail = query.value("email").toString();
 
+
         ui->name_3->setText(query.value("name").toString());
         ui->gender_3->setText(query.value("gender").toString());
         ui->ethnicity_3->setText(query.value("ethnicity").toString());
