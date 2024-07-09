@@ -14,21 +14,24 @@ SOURCES += \
     main.cpp \
     teacher.cpp \
     widget.cpp \
-    timetable.cpp
+    timetable.cpp \
+    schooltimetable.cpp
 
 HEADERS += \
     changepassword.h \
     choose_course.h \
     teacher.h \
     timetable.h \
-    widget.h
+    widget.h \
+    schooltimetable.h
 
 FORMS += \
     changepassword.ui \
     choose_course.ui \
     teacher.ui \
     timetable.ui \
-    widget.ui
+    widget.ui \
+    schooltimetable.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

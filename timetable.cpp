@@ -83,7 +83,6 @@ Timetable::Timetable(const QString& username, int id, QWidget *parent)
                 table_h_headers  << "课程名" << "任课教师" << "地点" << "上课时间"<< " ";//<< "课序号"<< dropcourse;
 
                 course_model->setHorizontalHeaderLabels(table_h_headers);
-
                 QStandardItem *itemName    = new QStandardItem(info.courseName);
                 QStandardItem *itemTeacher = new QStandardItem(info.courseTeacher);
                 QStandardItem *itemPlace   = new QStandardItem(info.coursePlace);
