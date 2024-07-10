@@ -234,7 +234,6 @@ void Choose_course::on_refresh_clicked()
             ui->tableView->setIndexWidget(course_model->index(course_model->rowCount()-1, 4),choose_course);
             connect(choose_course, &QPushButton::clicked, this, &Choose_course::Choose_a_course);
 
-
             ++row;
 
         }
