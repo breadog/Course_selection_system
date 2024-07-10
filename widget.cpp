@@ -49,10 +49,10 @@ void Widget::Login()
     }
 
     QSqlQuery query;
-    query.prepare("SELECT * FROM User WHERE name = :username AND password = :password");
+    query.prepare("SELECT * FROM User WHERE name = :username AND password = :password AND user_role=:userRole");
     query.bindValue(":username", username);
     query.bindValue(":password", password);
-    //query.bindValue(":user_role", role);
+    query.bindValue(":userRole", role);
 
     if(!query.exec())
     {

@@ -8,6 +8,8 @@
 #include "teacherinfo.h"
 #include "teacher.h"
 #include "showallstudent.h"
+#include "addstudent.h"
+
 namespace Ui {
 class T_MainWindow;
 }
@@ -33,6 +35,8 @@ private slots:
     void on_passwordalter_clicked();
 
     void on_exit_clicked();
+
+    void on_addstu_clicked();
 
 private:
     Ui::T_MainWindow *ui;

@@ -1,6 +1,8 @@
 #include "t_mainwindow.h"
 #include "ui_t_mainwindow.h"
 
+// #include <
+
 T_MainWindow::T_MainWindow(const QString& username,int id,QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::T_MainWindow)
@@ -100,5 +102,12 @@ void T_MainWindow::on_exit_clicked()
     w->show();
     this->hide();
     return;
+}
+
+
+void T_MainWindow::on_addstu_clicked()
+{
+    addstudent *add = new addstudent();
+    add->show();
 }
 
