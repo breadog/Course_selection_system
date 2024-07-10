@@ -24,7 +24,6 @@ public:
 
 private slots:
 
-    void on_toolButton_4_clicked();
 
     void on_personinfo_clicked();
 
@@ -43,6 +42,8 @@ private:
     ChangePassword *changePassword;
     TeacherInfo *teacherInfo;
 //    Teacher *teacher;
+    Showallstudent * showAllStudent;
+    addstudent *studentManagement;
 
     QString username;
     int id;
