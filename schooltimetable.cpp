@@ -127,3 +127,72 @@ schooltimetable::~schooltimetable()
 {
     delete ui;
 }
+
+void schooltimetable::on_refresh_clicked()
+{
+
+    //加载数据
+    struct Course{
+        QString name;
+        QString teacher;
+        QString place;
+        QList<int> time;
+        QList<int> date;
+        QList<int> week;
+
+    };
+
+    // 连接数据库
+    QString dbName = "database.db";
+    QString dbPath = QCoreApplication::applicationDirPath() + "./" + dbName;  // Use a relative path
+
+    QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
+    db.setDatabaseName(dbPath);
+
+    if (!db.open()) {
+        QMessageBox::critical(nullptr, "错误", "数据库打开失败：" + db.lastError().text());
+        return;
+    }
+
+    // 清除表格现有数据
+    ui->tableWidget->clearContents();
+
+    // 重新加载数据
+    QVector<Course> cList;
+    QSqlQuery query;
+    query.prepare("SELECT Course.name, Course.teacher, Course.place, Course.time, Course.date, Course.week "
+                  "FROM SC "
+                  "INNER JOIN Course ON SC.course_id = Course.id "
+                  "WHERE SC.student_id = :userId");
+    query.bindValue(":userId", id);
+    if (!query.exec()) {
+        QMessageBox::critical(nullptr, "错误", "数据库查询失败：" + query.lastError().text());
+        return;
+    }
+
+    while(query.next()) {
+        Course course;
+        course.name = query.value(0).toString();
+        course.teacher = query.value(1).toString();
+        course.place = query.value(2).toString();
+        course.time = convertStringToIntList(query.value(3).toString(), ",");
+        course.date = convertStringToIntList(query.value(4).toString(), ",");
+        course.week = convertStringToIntList(query.value(5).toString(), "-");
+        cList.append(course);
+    }
+
+    // 将课程数据映射到表格中
+    for (const Course& course : cList) {
+        QString courseInfo = course.name + "\n" + course.teacher + "\n" + course.place;
+        for (int time : course.time) {
+            for (int date : course.date) {
+                int row = time - 1; // time 1-8对应row 0-7
+                int col = date - 1; // date 1-7对应col 0-6
+                QTableWidgetItem *item = new QTableWidgetItem(courseInfo);
+                ui->tableWidget->setItem(row, col, item);
+            }
+        }
+    }
+
+
+}
