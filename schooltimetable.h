@@ -22,6 +22,9 @@ public:
     explicit schooltimetable(const QString& username, int id, QWidget *parent = 0);
     ~schooltimetable();
 
+private slots:
+    void on_refresh_clicked();
+
 private:
     Ui::schooltimetable *ui;
 

@@ -1,6 +1,6 @@
 QT       += core gui
 QT       += sql network
-#QT       += xlsx
+QT       += xlsx
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -11,6 +11,7 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    addstudent.cpp \
     changepassword.cpp \
     choose_course.cpp \
     enter_scores.cpp \
@@ -26,6 +27,7 @@ SOURCES += \
     studentinfo.cpp
 
 HEADERS += \
+    addstudent.h \
     changepassword.h \
     choose_course.h \
     enter_scores.h \
@@ -40,6 +42,7 @@ HEADERS += \
     studentinfo.h
 
 FORMS += \
+    addstudent.ui \
     changepassword.ui \
     choose_course.ui \
     enter_scores.ui \

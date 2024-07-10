@@ -89,7 +89,7 @@ QPushButton:default {
         </widget>
        </item>
        <item row="3" column="0">
-        <widget class="QToolButton" name="toolButton_4">
+        <widget class="QToolButton" name="addstu">
          <property name="styleSheet">
           <string notr="true">/* 默认 */
 QToolButton{
