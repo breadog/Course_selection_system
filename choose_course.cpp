@@ -49,11 +49,6 @@ Choose_course::Choose_course(const QString& username, QWidget *parent)
 
     while (query.next()) {
         StudentCourseInfo studentCourseInfo;
-        // studentCourseInfo.studentName = query.value(0).toString();
-        // studentCourseInfo.courseName = query.value(1).toString();
-        // studentCourseInfo.courseTime = query.value(2).toString();
-        // studentCourseInfo.coursePlace = query.value(3).toString();
-        // studentCourseInfo.courseTeacher = query.value(4).toString();
         studentCourseInfo.courseId = query.value(0).toString();
         studentCourseInfo.courseName = query.value(1).toString();
         studentCourseInfo.courseTime = query.value(2).toString();
@@ -153,8 +148,6 @@ void Choose_course::Choose_a_course()
             // 成功选择记录
             QMessageBox::information(this, "选课成功", "成功选择该课程！");
             Choose_course *c = new Choose_course(username);
-            c->show();
-            this->hide();
 
               // 从表格中移除对应的行
         } else {
@@ -165,4 +158,86 @@ void Choose_course::Choose_a_course()
     }
     db.close();
 
+}
+
+void Choose_course::on_refresh_clicked()
+{
+    QStandardItemModel* course_model = new QStandardItemModel();
+
+    ui->tableView->setModel(course_model);
+
+    ui->tableView->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch); //宽度自适应
+
+
+    QString dbName = "database.db";
+    QString dbPath = QCoreApplication::applicationDirPath() + "./" + dbName;  // Use a relative path
+
+    QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
+    db.setDatabaseName(dbPath);
+
+    if (!db.open()) {
+        QMessageBox::critical(nullptr, "错误", "数据库打开失败：" + db.lastError().text());
+        return;
+    }
+    QSqlQuery query;
+
+
+    struct StudentCourseInfo {
+        QString courseId;
+        QString studentName;
+        QString courseName;
+        QString courseTime;
+        QString coursePlace;
+        QString courseTeacher;
+    };
+
+    QList<StudentCourseInfo> studentCourseList;
+
+
+    query.prepare("SELECT * FROM Course WHERE id NOT IN(SELECT course_id FROM SC inner join User on User.id=SC.student_id WHERE User.name=:username)");
+    query.bindValue(":username", username);
+    query.exec();
+    //course_model->setColumnCount(4); // 设置模型的列数为4
+
+
+    while (query.next()) {
+        StudentCourseInfo studentCourseInfo;
+        studentCourseInfo.courseId = query.value(0).toString();
+        studentCourseInfo.courseName = query.value(1).toString();
+        studentCourseInfo.courseTime = query.value(2).toString();
+        studentCourseInfo.coursePlace = query.value(3).toString();
+        studentCourseInfo.courseTeacher = query.value(4).toString();
+
+        studentCourseList << studentCourseInfo;
+
+
+        int row = 0; //行索引
+        course_model->clear();
+
+        for (const StudentCourseInfo& info : studentCourseList) {
+
+            QStringList table_h_headers;
+            table_h_headers  << "课程名" << "任课教师" << "地点" << "上课时间"<< " ";
+            course_model->setHorizontalHeaderLabels(table_h_headers);
+            QStandardItem *itemId      = new QStandardItem(info.courseId);
+            QStandardItem *itemName    = new QStandardItem(info.courseName);
+            QStandardItem *itemTeacher = new QStandardItem(info.courseTeacher);
+            QStandardItem *itemPlace   = new QStandardItem(info.coursePlace);
+            QStandardItem *itemTime    = new QStandardItem(info.courseTime);
+
+            course_model->setItem(row, 0, itemName);
+            course_model->setItem(row, 1, itemTeacher);
+            course_model->setItem(row, 2, itemPlace);
+            course_model->setItem(row, 3, itemTime);
+            course_model->setItem(row, 4, itemId);
+            QPushButton *choose_course = new QPushButton("选课");
+            ui->tableView->setIndexWidget(course_model->index(course_model->rowCount()-1, 4),choose_course);
+            connect(choose_course, &QPushButton::clicked, this, &Choose_course::Choose_a_course);
+
+            ++row;
+
+        }
+
+    }
+    db.close();
 }
