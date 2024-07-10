@@ -216,7 +216,6 @@ void Choose_course::on_refresh_clicked()
 
         for (const StudentCourseInfo& info : studentCourseList) {
 
-
             QStringList table_h_headers;
             table_h_headers  << "课程名" << "任课教师" << "地点" << "上课时间"<< " ";
             course_model->setHorizontalHeaderLabels(table_h_headers);

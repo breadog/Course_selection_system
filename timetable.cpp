@@ -262,7 +262,6 @@ void Timetable::refreshTable()
                 course_model->setItem(row, 5, itemId);
 
 
-
                 QPushButton *drop_course = new QPushButton("退课");
                 ui->tableView->setIndexWidget(course_model->index(course_model->rowCount()-1, 5),drop_course);
                 connect(drop_course, &QPushButton::clicked, this, &Timetable::Drop_a_course);

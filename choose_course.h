@@ -25,7 +25,6 @@ public:
 private slots:
     void Choose_a_course();
 
-
     void on_refresh_clicked();
 
 private:
