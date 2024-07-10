@@ -71,6 +71,10 @@ QPushButton:default {
          <property name="text">
           <string>我的课表</string>
          </property>
+         <property name="icon">
+          <iconset resource="res.qrc">
+           <normaloff>:/res/calendar1.png</normaloff>:/res/calendar1.png</iconset>
+         </property>
          <property name="iconSize">
           <size>
            <width>48</width>
@@ -120,6 +124,10 @@ QPushButton:default {
          </property>
          <property name="text">
           <string>选课</string>
+         </property>
+         <property name="icon">
+          <iconset resource="res.qrc">
+           <normaloff>:/res/5.png</normaloff>:/res/5.png</iconset>
          </property>
          <property name="iconSize">
           <size>
@@ -171,6 +179,10 @@ QPushButton:default {
          <property name="text">
           <string>退出系统</string>
          </property>
+         <property name="icon">
+          <iconset resource="res.qrc">
+           <normaloff>:/res/share-circle-line.png</normaloff>:/res/share-circle-line.png</iconset>
+         </property>
          <property name="iconSize">
           <size>
            <width>48</width>
@@ -221,6 +233,10 @@ QPushButton:default {
          <property name="text">
           <string>个人信息</string>
          </property>
+         <property name="icon">
+          <iconset resource="res.qrc">
+           <normaloff>:/res/account-circle-line.png</normaloff>:/res/account-circle-line.png</iconset>
+         </property>
          <property name="iconSize">
           <size>
            <width>48</width>
@@ -270,6 +286,10 @@ QPushButton:default {
          </property>
          <property name="text">
           <string>修改密码</string>
+         </property>
+         <property name="icon">
+          <iconset resource="res.qrc">
+           <normaloff>:/res/lock.png</normaloff>:/res/lock.png</iconset>
          </property>
          <property name="iconSize">
           <size>
@@ -324,6 +344,10 @@ QPushButton:default {
          <property name="text">
           <string>已选课程</string>
          </property>
+         <property name="icon">
+          <iconset resource="res.qrc">
+           <normaloff>:/res/3.png</normaloff>:/res/3.png</iconset>
+         </property>
          <property name="iconSize">
           <size>
            <width>48</width>
@@ -346,6 +370,7 @@ QPushButton:default {
     </item>
    </layout>
   </widget>
+  <widget class="QStatusBar" name="statusbar"/>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
@@ -356,8 +381,9 @@ QPushButton:default {
     </rect>
    </property>
   </widget>
-  <widget class="QStatusBar" name="statusbar"/>
  </widget>
- <resources/>
+ <resources>
+  <include location="res.qrc"/>
+ </resources>
  <connections/>
 </ui>

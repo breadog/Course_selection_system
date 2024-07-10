@@ -4,5 +4,13 @@
         <file>res/auditor.png</file>
         <file>res/loginBtn.png</file>
         <file>res/return.png</file>
+        <file>res/2.png</file>
+        <file>res/3.png</file>
+        <file>res/5.png</file>
+        <file>res/account-circle-line.png</file>
+        <file>res/calendar1.png</file>
+        <file>res/lock.png</file>
+        <file>res/save.png</file>
+        <file>res/share-circle-line.png</file>
     </qresource>
 </RCC>

@@ -34,8 +34,6 @@ private slots:
 
     void on_toolButton_5_clicked();
 
-    void on_toolButton_4_clicked();
-
     void on_courseChosen_clicked();
 
 private:
