@@ -32,6 +32,8 @@ private slots:
 
     void on_refresh_clicked();
 
+    void refreshTable();
+
 private:
     Ui::Timetable *ui;
 

@@ -175,9 +175,104 @@ void Timetable::Drop_a_course()
 
 void Timetable::on_refresh_clicked()
 {
-    Timetable *table = new Timetable(username, id);
-    this->hide();
-    table->show();
+    refreshTable();
+}
+
+void Timetable::refreshTable()
+{
+    QStandardItemModel* course_model = new QStandardItemModel();
+
+    ui->tableView->setModel(course_model);
+
+    ui->tableView->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch); //宽度自适应
+    QString dbName = "database.db";
+    QString dbPath = QCoreApplication::applicationDirPath() + "./" + dbName;  // Use a relative path
+
+    QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
+    db.setDatabaseName(dbPath);
+
+    if (!db.open()) {
+        QMessageBox::critical(nullptr, "错误", "数据库打开失败：" + db.lastError().text());
+        return;
+    }
+    QSqlQuery query;
+
+
+    struct StudentCourseInfo {
+        QString courseId;
+        QString studentName;
+        QString courseName;
+        QString courseTime;
+        QString coursePlace;
+        QString courseTeacher;
+        int courseScore;
+    };
+    QList<StudentCourseInfo> studentCourseList;
+    //显示学生已选课程
+    query.prepare("SELECT User.name, Course.name, Course.time, Course.place, Course.teacher, Course.week , Course.id , SC.score "
+               "FROM SC "
+               "INNER JOIN Course ON SC.course_id = Course.id "
+               "INNER JOIN User ON User.id = SC.student_id WHERE User.name = :username");
+    query.bindValue(":username", username);
+    query.exec();
+    while (query.next()) {
+        StudentCourseInfo studentCourseInfo;
+
+        studentCourseInfo.studentName = query.value(0).toString();
+        studentCourseInfo.courseName = query.value(1).toString();
+        studentCourseInfo.courseTime = query.value(2).toString();
+        studentCourseInfo.coursePlace = query.value(3).toString();
+        studentCourseInfo.courseTeacher = query.value(4).toString();
+        studentCourseInfo.courseId = query.value(6).toString();
+        studentCourseInfo.courseScore = query.value(7).toInt();
+
+        studentCourseList << studentCourseInfo;
+
+        int row = 0; //行索引
+        course_model->clear();
+        for (const StudentCourseInfo& info : studentCourseList) {
+            // qDebug() << "info.studentName: "   << info.studentName;
+            // qDebug() << "info.courseName: "    << info.courseName;
+            // qDebug() << "info.courseTime: "    << info.courseTime;
+            // qDebug() << "info.coursePlace: "   << info.coursePlace;
+            // qDebug() << "info.courseTeacher: " << info.courseTeacher;
+            // qDebug() << "-------------------------";
+
+
+            if(info.studentName == username)
+            {
+
+                QStringList table_h_headers;
+                table_h_headers  << "课程名" << "任课教师" << "地点" << "上课时间"<< "成绩" <<" ";//<< "课序号"<< dropcourse;
+
+                course_model->setHorizontalHeaderLabels(table_h_headers);
+
+                QStandardItem *itemName    = new QStandardItem(info.courseName);
+                QStandardItem *itemTeacher = new QStandardItem(info.courseTeacher);
+                QStandardItem *itemPlace   = new QStandardItem(info.coursePlace);
+                QStandardItem *itemTime    = new QStandardItem(info.courseTime);
+                QStandardItem *itemId      = new QStandardItem(info.courseId);
+                QStandardItem *itemScore   = new QStandardItem(QString::number(info.courseScore));
+
+                course_model->setItem(row, 0, itemName);
+                course_model->setItem(row, 1, itemTeacher);
+                course_model->setItem(row, 2, itemPlace);
+                course_model->setItem(row, 3, itemTime);
+                course_model->setItem(row, 4, itemScore);
+                course_model->setItem(row, 5, itemId);
+
+
+
+                QPushButton *drop_course = new QPushButton("退课");
+                ui->tableView->setIndexWidget(course_model->index(course_model->rowCount()-1, 5),drop_course);
+                connect(drop_course, &QPushButton::clicked, this, &Timetable::Drop_a_course);
+
+                ++row;
+            }
+        }
+
+    }
+    db.close();
 }
 
 
