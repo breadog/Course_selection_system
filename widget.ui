@@ -35,33 +35,14 @@
    <widget class="QLabel" name="loginLabel">
     <property name="geometry">
      <rect>
-      <x>0</x>
-      <y>0</y>
+      <x>10</x>
+      <y>-10</y>
       <width>196</width>
       <height>69</height>
      </rect>
     </property>
     <property name="text">
      <string>登录之后内容更精彩</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="canLabel">
-    <property name="geometry">
-     <rect>
-      <x>745</x>
-      <y>16</y>
-      <width>34</width>
-      <height>38</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true"/>
-    </property>
-    <property name="text">
-     <string>X</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
     </property>
    </widget>
    <widget class="QLabel" name="botLabel">
@@ -190,25 +171,6 @@
     </property>
     <property name="scaledContents">
      <bool>true</bool>
-    </property>
-   </widget>
-   <widget class="QLabel" name="seeLabel">
-    <property name="geometry">
-     <rect>
-      <x>510</x>
-      <y>219</y>
-      <width>16</width>
-      <height>12</height>
-     </rect>
-    </property>
-    <property name="sizePolicy">
-     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-      <horstretch>0</horstretch>
-      <verstretch>0</verstretch>
-     </sizepolicy>
-    </property>
-    <property name="text">
-     <string>TextLabel</string>
     </property>
    </widget>
    <widget class="QLabel" name="userTypeLabel">
@@ -391,30 +353,6 @@ QComboBox QAbstractItemView::item:selected {
     </property>
     <property name="scaledContents">
      <bool>true</bool>
-    </property>
-   </widget>
-   <widget class="QLabel" name="labelMin">
-    <property name="geometry">
-     <rect>
-      <x>688</x>
-      <y>33</y>
-      <width>20</width>
-      <height>11</height>
-     </rect>
-    </property>
-    <property name="sizePolicy">
-     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-      <horstretch>0</horstretch>
-      <verstretch>0</verstretch>
-     </sizepolicy>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">#labelMin{
-	padding-bottom:4px;
-}</string>
-    </property>
-    <property name="text">
-     <string>TextLabel</string>
     </property>
    </widget>
    <widget class="QPushButton" name="Login">

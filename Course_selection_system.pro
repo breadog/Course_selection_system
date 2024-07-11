@@ -1,6 +1,6 @@
 QT       += core gui
 QT       += sql network
-#QT       += xlsx
+QT       += xlsx
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -63,4 +63,9 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 RESOURCES += \
     res.qrc
+
+DISTFILES += \
+    res/2.png \
+    res/3.png \
+    res/5.png
 

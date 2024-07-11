@@ -35,6 +35,9 @@
    <property name="text">
     <string>输入添加学生id:</string>
    </property>
+   <property name="readOnly">
+    <bool>true</bool>
+   </property>
   </widget>
   <widget class="QLineEdit" name="lineEdit_3">
    <property name="geometry">
@@ -47,6 +50,9 @@
    </property>
    <property name="text">
     <string>输入添加学生姓名:</string>
+   </property>
+   <property name="readOnly">
+    <bool>true</bool>
    </property>
   </widget>
   <widget class="QLineEdit" name="name">
@@ -70,6 +76,9 @@
    </property>
    <property name="text">
     <string>输入添加学生性别:</string>
+   </property>
+   <property name="readOnly">
+    <bool>true</bool>
    </property>
   </widget>
   <widget class="QLineEdit" name="gender">
@@ -107,6 +116,9 @@
    <property name="text">
     <string>输入添加学生院系:</string>
    </property>
+   <property name="readOnly">
+    <bool>true</bool>
+   </property>
   </widget>
   <widget class="QLineEdit" name="class_2">
    <property name="geometry">
@@ -133,6 +145,9 @@
    <property name="text">
     <string>输入添加学生班别:</string>
    </property>
+   <property name="readOnly">
+    <bool>true</bool>
+   </property>
   </widget>
   <widget class="QLineEdit" name="major">
    <property name="geometry">
@@ -155,6 +170,9 @@
    </property>
    <property name="text">
     <string>输入添加学生专业:</string>
+   </property>
+   <property name="readOnly">
+    <bool>true</bool>
    </property>
   </widget>
   <widget class="QLineEdit" name="ethnicit">
@@ -181,6 +199,9 @@
    </property>
    <property name="text">
     <string>输入添加学生民族:</string>
+   </property>
+   <property name="readOnly">
+    <bool>true</bool>
    </property>
   </widget>
   <widget class="QPushButton" name="execl">
